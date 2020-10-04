@@ -17,4 +17,6 @@ RUN git clone https://github.com/jef/nvidia-snatcher.git .
 
 RUN npm i
 
+COPY .env .env
+
 CMD [ "npm", "run", "start" ]
