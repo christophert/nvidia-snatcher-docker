@@ -7,10 +7,16 @@ RUN apt-get update && apt-get install -qq -y ca-certificates fonts-liberation li
     libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 \
     libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
 
+RUN groupadd -r snatcher && useradd -r -g snatcher -d /usr/src/app snatcher
+RUN mkdir /usr/src/app && chown -R snatcher:snatcher /usr/src/app
+USER snatcher
+
 WORKDIR /usr/src/app
 
 RUN git clone https://github.com/jef/nvidia-snatcher.git .
 
 RUN npm i
+
+COPY .env .env
 
 CMD [ "npm", "run", "start" ]
