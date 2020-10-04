@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -qq -y ca-certificates fonts-liberation li
     libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
 
 RUN groupadd -r snatcher && useradd -r -g snatcher snatcher
+RUN chown -R snatcher:snatcher /usr/src/app
 USER snatcher
 
 WORKDIR /usr/src/app
