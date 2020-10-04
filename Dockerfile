@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:current-buster
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -qq -y ca-certificates fonts-liberation libappindicator3-1 \
